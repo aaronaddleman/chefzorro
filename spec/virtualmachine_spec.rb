@@ -2,49 +2,44 @@ require 'spec_helper'
  
 describe VirtualMachine do
   before :each do
-      @basic_vm = VirtualMachine.new(:hostname => "Hostname",
-                                     :description => "This is about the host",
-                                     :flavor => "m1.small")
 
-      # @ = VirtualMachine.new
-      
-      @hosts = [
-        VirtualMachine.new(:hostname => "Hostname1",
-                               :description => "This is about the host",
-                               :flavor => "m1.small"),
-        VirtualMachine.new(:hostname => "Hostname2",
-                               :description => "This is about the host",
-                               :flavor => "m1.small"),
-        VirtualMachine.new(:hostname => "Hostname3",
-                               :description => "This is about the host",
-                               :flavor => "m1.small")
-      ]
+    VirtualMachine.class_variable_set :@@filepath, 'vms.json'
+
+    @basic_vm = VirtualMachine.new(:hostname => "Hostname",
+                                   :description => "This is about the host",
+                                   :flavor => "m1.small")
+    
+    @hosts = [
+      VirtualMachine.new(:hostname => "Hostname1",
+                             :description => "This is about the host",
+                             :flavor => "m1.small"),
+      VirtualMachine.new(:hostname => "Hostname2",
+                             :description => "This is about the host",
+                             :flavor => "m1.small"),
+      VirtualMachine.new(:hostname => "Hostname3",
+                             :description => "This is about the host",
+                             :flavor => "m1.small")
+    ]
 
   end
 
   describe "#new" do
-    it "take three paramaters to create a VirtualMachine" do
+    it "should exist as a VirtualMachine class" do
       expect(@basic_vm.class).to eq(VirtualMachine)
     end
   end
 
-  describe "#hostname" do
-    it "returns the correct hostname" do
+  describe "#paramaters" do
+    it "returns the correct paramaters" do
       expect(@basic_vm.hostname).to eq("Hostname")
-    end
-  end
-
-  describe "#description" do
-    it "returns the correct description" do
       expect(@basic_vm.description).to eq("This is about the host")
-    end
-  end
-
-  describe "#flavor" do
-    it "returns the correct flavor" do
       expect(@basic_vm.flavor).to eq("m1.small")
     end
   end
 
+  describe "#filepath" do
+    it "should accept a filepath" do
+      expect(VirtualMachine.class_variable_get(:@@filepath)).to eq('vms.json')
+    end
+  end
 end
-
