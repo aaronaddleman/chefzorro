@@ -3,7 +3,7 @@ require 'spec_helper'
 describe VirtualMachine do
   before :each do
 
-    VirtualMachine.class_variable_set :@@filepath, 'vms.json'
+    
 
     @basic_vm = VirtualMachine.new(:hostname => "Hostname",
                                    :description => "This is about the host",
@@ -39,7 +39,7 @@ describe VirtualMachine do
 
   describe "#filepath" do
     it "should accept a filepath" do
-      expect(VirtualMachine.class_variable_get(:@@filepath)).to eq('vms.json')
+      expect(VirtualMachine.class_variable_get(:@@filepath)).to eq(nil)
     end
   end
 end
