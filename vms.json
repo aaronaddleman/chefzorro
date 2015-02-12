@@ -1,0 +1,16 @@
+{
+  "hosts": {
+    "tc6-test": {
+      "hostname": "tomcat-6",
+      "description": "tomcat 6 test",
+      "flavor": "m1.small",
+      "build_number": "111"
+    },
+    "tc8-test": {
+      "hostname": "tomcat-8",
+      "description": "upgrade to 8",
+      "flavor": "m1.medium",
+      "build_number": "111"
+    }
+  }
+}
